@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -26,7 +27,15 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, googleProvider);
+  signInWithPopup(auth, googleProvider).catch((error) => {
+    switch (error.code) {
+      case "auth/popup-closed-by-user":
+        console.log("user closed the sign in with google popup");
+        break;
+      default:
+        console.log("error creating the user", error.message);
+    }
+  });
 export const signInWIthGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
@@ -63,4 +72,9 @@ export const createUserDocumentFromAuth = async (
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password);
 };
