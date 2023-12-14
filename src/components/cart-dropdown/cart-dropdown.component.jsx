@@ -7,7 +7,7 @@ import CartItem from "../cart-item/cart-item.component";
 
 import React from "react";
 
-function CartDropdown() {
+const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -26,6 +26,6 @@ function CartDropdown() {
       <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
     </CartDropdownContainer>
   );
-}
+};
 
 export default CartDropdown;

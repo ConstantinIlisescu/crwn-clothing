@@ -2,7 +2,7 @@ import "./cart-item.styles.scss";
 
 import React from "react";
 
-function CartItem({ cartItem }) {
+const CartItem = ({ cartItem }) => {
   const { name, quantity, imageUrl, price } = cartItem;
   return (
     <div className="cart-item-container">
@@ -15,6 +15,6 @@ function CartItem({ cartItem }) {
       </div>
     </div>
   );
-}
+};
 
 export default CartItem;
