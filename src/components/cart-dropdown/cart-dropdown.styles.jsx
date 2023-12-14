@@ -1,4 +1,6 @@
-.cart-dropdown-container {
+import styled from 'styled-components';
+
+export const CartDropdownContainer = styled.div`
   position: absolute;
   width: 240px;
   height: 340px;
@@ -11,18 +13,6 @@
   right: 40px;
   z-index: 5;
 
-  .empty-message {
-    font-size: 18px;
-    margin: 50px auto;
-  }
-
-  .cart-items {
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
   button {
     margin-top: auto;
     font-size: 12px;
@@ -31,4 +21,19 @@
       font-size: 12px;
     }
   }
-}
+`
+
+
+export const EmptyMesaage = styled.span`
+    font-size: 18px;
+    margin: 50px auto;
+`
+
+export const CartItems = styled.div`
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+`
+
+
